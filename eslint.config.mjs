@@ -1,65 +1,11 @@
-import { defineConfig } from 'eslint-define-config';
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 
-export default defineConfig({
-  languageOptions: {
-    ecmaVersion: 'latest',  // Supports latest ECMAScript version
-    sourceType: 'module',   // Use ES Modules
-    globals: {
-      process: 'readonly',  // Define global variables if needed
-    },
-  },
-  // Manually adding the rules from eslint:recommended
-  rules: {
-    'array-callback-return': 'warn',
-    'block-scoped-var': 'warn',
-    'class-methods-use-this': 'warn',
-    'consistent-return': 'warn',
-    'curly': ['warn', 'multi-line'],
-    'default-case': 'warn',
-    'dot-location': ['warn', 'property'],
-    'dot-notation': 'warn',
-    'eqeqeq': ['warn', 'always'],
-    'guard-for-in': 'warn',
-    'no-alert': 'warn',
-    'no-array-constructor': 'warn',
-    'no-caller': 'warn',
-    'no-case-declarations': 'warn',
-    'no-empty-function': 'warn',
-    'no-eval': 'warn',
-    'no-extend-native': 'warn',
-    'no-extra-bind': 'warn',
-    'no-fallthrough': 'warn',
-    'no-floating-decimal': 'warn',
-    'no-implicit-globals': 'warn',
-    'no-implied-eval': 'warn',
-    'no-invalid-this': 'warn',
-    'no-iterator': 'warn',
-    'no-labels': 'warn',
-    'no-lone-blocks': 'warn',
-    'no-magic-numbers': 'warn',
-    'no-multi-spaces': 'warn',
-    'no-multi-str': 'warn',
-    'no-new': 'warn',
-    'no-new-func': 'warn',
-    'no-octal': 'warn',
-    'no-param-reassign': 'warn',
-    'no-proto': 'warn',
-    'no-redeclare': 'warn',
-    'no-restricted-properties': 'warn',
-    'no-return-assign': 'warn',
-    'no-script-url': 'warn',
-    'no-self-assign': 'warn',
-    'no-self-compare': 'warn',
-    'no-unused-vars': 'warn',
-    'no-useless-call': 'warn',
-    'no-useless-concat': 'warn',
-    'no-useless-escape': 'warn',
-    'no-with': 'warn',
-    'prefer-const': 'warn',
-    'prefer-template': 'warn',
-    'radix': 'warn',
-    'require-await': 'warn',
-    'wrap-iife': ['warn', 'inside'],
-    'yoda': 'warn',
-  },
-});
+
+export default defineConfig([
+  { files: ["**/*.{js,mjs,cjs,ts}"], plugins: { js }, extends: ["js/recommended"] },
+  { files: ["**/*.{js,mjs,cjs,ts}"], languageOptions: { globals: globals.browser } },
+  tseslint.configs.recommended,
+]);
