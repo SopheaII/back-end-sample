@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.get('/about', (req: Request, res: Response) => {
   console.log("----------- API request.")
-  res.send('About us. version: 1.0.7');
+  res.send('About us. version: 1.0.8');
 });
 
 
