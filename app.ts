@@ -10,8 +10,6 @@ import { Request, Response } from 'express';
 
 app.use(express.json());
 
-app.use('/api/auth', auth)
-
 app.get('/about', (req: Request, res: Response) => {
   console.log("----------- API request.")
   res.send('About us. version: 1.0.6');
