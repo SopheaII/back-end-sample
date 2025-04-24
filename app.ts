@@ -8,11 +8,7 @@ import { DataSource } from 'typeorm';
 import cookieParser from 'cookie-parser'
 import { Request, Response } from 'express';
 
-
-
-// Middleware setup
 app.use(express.json());
- // for form data
 
 app.use('/api/auth', auth)
 
